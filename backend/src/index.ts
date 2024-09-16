@@ -6,6 +6,7 @@ import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import cors from "cors";
 import dotenv from "dotenv";
+import router from "./routes/route";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const app: Application = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use("/api", router);
 
 // Create an S3 client
 const s3Client = new S3Client({
